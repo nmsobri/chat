@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section id="chatrooms">
+        <div id="new_room">
+            <span>Start a new room</span>
+            <input type="text" id="new_room_name"/>
+            <input type="button" id="new_room_btn" value="Start"/>
+        </div>
+        <div id="allrooms">
+            <div id="header">Or join a room</div>
+            <div id="rooms_list"></div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+    {% parent %}
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/rooms.js"></script>
+{% endblock %}

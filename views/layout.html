@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title || "Chat System" }}</title>
+
+    {% block header %}
+        <link rel="stylesheet" href="/css/app.css"/>
+    {% endblock %}
+</head>
+
+<body>
+    <header id="banner">
+        <h1>Awesome Chat</h1>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        Hope you enjoy your stay here
+    </footer>
+
+    {% block footer %}
+        <script type="text/javascript" src="/js/jquery.js"></script>
+    {% endblock %}
+</body>
+
+</html>

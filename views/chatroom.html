@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="chatroom">
+    <div id="messages">
+        <!--user message-->
+    </div>
+
+    <div id="user-input">
+        <input type="text" id="message" placeholder="Enter you message here"/>
+        <input type="button" id="send" value="Send"/>
+    </div>
+</section>
+
+<section id="nameform" class="modal">
+    <div class="backdrop"></div>
+    <div class="popup">
+        <div class="pophead">Please enter a nickname</div>
+        <div class="popbody">
+            <input type="text" id="nickname"/>
+            <input type="button" id="setname" value="Set Name"/>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+    {% parent %}
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/chat.js"></script>
+{% endblock %}

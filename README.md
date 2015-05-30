@@ -1,3 +1,3 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
+### Chat System
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
+Experimenting Chat System Using Node.js and Socket.io
