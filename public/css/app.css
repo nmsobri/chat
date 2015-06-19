@@ -24,22 +24,28 @@ div#messages {
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     width: 100%;
     padding: 10px;
 }
 
 input#message {
-    width: -moz-calc(100% - 95px);
-    width: -webkit-calc(100% - 95px);
-    width: calc(100% - 95px);
-    height: 30px;
+    width: -moz-calc(100% - 125px);
+    width: -webkit-calc(100% - 125px);
+    width: calc(100% - 125px);
+    height: 24px;
     padding-left: 10px;
+    font-size: 12px;
 }
 
 input#send {
-    width: 75px;
-    height: 36px;
+    width: 50px;
+    height: 30px;
+}
+
+input#quit {
+    width: 50px;
+    height: 30px;
 }
 
 header{
@@ -183,4 +189,15 @@ a {
 .room_div a{
     position: absolute;
     right: 40px;
+}
+
+.serverMessage, .systemMessage {
+    font-size: 12px;
+    font-weight: bolder;
+    margin-bottom: 3px;
+}
+
+.myMessage, .userMessage {
+    font-size: 12px;
+    margin-bottom: 3px;
 }

@@ -8,17 +8,24 @@ $( function() {
      *#############################################*/
 
     var sendMessage = function() {
-        var data = {
-            message : $( '#message' ).val(),
-            type: 'userMessage'
-        };
 
-        chatUser.send( JSON.stringify( data ) );
-        $( '#message' ).val( '' );
+        var message = $( '#message' ).val();
+
+        if ( message !== '' ) {
+            chatUser.send( JSON.stringify( {
+                    message : message,
+                    type: 'userMessage'
+                } ) 
+            );
+            $( '#message' ).val( '' );
+        }
     };
 
     var setNickname = function() {
-        chatSystem.emit( 'set.name', { name: $( '#nickname').val() });
+        var nickname = $( '#nickname').val();
+         if ( nickname !== '' && nickname.length >= 3 ) {
+            chatSystem.emit( 'set.name', { name: nickname });
+         }
     };
 
 
@@ -61,6 +68,7 @@ $( function() {
      *############### Event handler ###############
      *#############################################*/
 
+     /*start new chatroom*/
     $( '#new_room_btn').click( function(){
         window.location = '/chatroom?room=' + $( '#new_room_name').val();
     });
@@ -73,13 +81,19 @@ $( function() {
     });
 
     /*or when user click on send button*/
-    $( '#send').click( sendMessage );
+    $( '#send' ).click( sendMessage );
+
+    /*quit button*/
+    $( '#quit').click( function() {
+        chatSystem.disconnect();
+        window.location = '/rooms';
+    });
 
     /*set nickname when user click set name button*/
-    $( '#setname').click( setNickname );
+    $( '#setname' ).click( setNickname );
 
     /*or when user press enter*/
-    $( '#nickname').keypress( function(e) {
+    $( '#nickname' ).keypress( function(e) {
         if(e.which == 13) {
             return setNickname();
         }

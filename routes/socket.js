@@ -37,8 +37,6 @@ module.exports.init = function( server ) {
 
             socket.send( JSON.stringify( { type: 'serverMessage',message: 'Welcome to the most interesting chat room on earth!'}));
             socket.in( data.room ).broadcast.emit( 'user.entered', {name: socket.client.nickname} );
-            socket.emit( 'user.entered', {name: socket.client.nickname} );
-
         });
 
         /*handling get room event*/
@@ -52,9 +50,10 @@ module.exports.init = function( server ) {
         socket.on( 'disconnect', function() {
             socket.in( socket.client.room ).broadcast.send( JSON.stringify({ type: 'serverMessage', message: socket.client.nickname + ' has left the room.'}));
             var rooms = getRoomList();
+
+            /*update room statistic*/
             socket.broadcast.emit('rooms.list', { rooms: rooms }); /*broadcast this event to all connected client, not just this socket*/
             socket.emit('rooms.list', { rooms: rooms });
-
         })
     });
 
